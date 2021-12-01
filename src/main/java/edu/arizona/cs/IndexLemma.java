@@ -2,7 +2,6 @@ package edu.arizona.cs;
 
 import java.io.File;
 
-import org.apache.lucene.analysis.core.WhitespaceAnalyzer;
 
 public class IndexLemma {
     public void Index(){

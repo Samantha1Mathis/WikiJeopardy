@@ -65,12 +65,12 @@ public class QueryEngine {
         if (directoryListing != null) {
 	          for (File files : directoryListing) {
 	            try{
-	                Scanner myReader = new Scanner(files);
+	                Scanner scanFiles = new Scanner(files);
 	                String title = "";
 	                String content = "";
 	                
-	                while (myReader.hasNextLine()) {
-	                    String data = myReader.nextLine();
+	                while (scanFiles.hasNextLine()) {
+	                    String data = scanFiles.nextLine();
 	                    if (data.startsWith("[[") && data.endsWith("]]") && !data.contains(":")){
 	                        title = data.substring(2, data.length()-2);
 	                        //System.out.println(title);
@@ -86,7 +86,7 @@ public class QueryEngine {
 	                        content = "";
 	                    }   
 	                }
-	                myReader.close();
+                    scanFiles.close();
 	            } catch(FileNotFoundException e) {
 	                System.out.println("An error occurred.");
 	                e.printStackTrace();
@@ -123,7 +123,7 @@ public class QueryEngine {
             //System.out.println(cat + quest + ans);
             questionReader.nextLine();
             String ansResult = searchPage(quest);
-            System.out.println(ansResult + " : " + ans);
+            //System.out.println(ansResult + " : " + ans);
             if (ansResult.equals(ans)){
                 totalScore++;
             }
@@ -139,9 +139,9 @@ public class QueryEngine {
         //Creates the answer list of from ResultClass objects
         //List<ResultClass>  ans=new ArrayList<ResultClass>();
         Query q;
-        String qAns;
+        //String qAns;
         //System.out.println("hello");
-        qAns = Lemma.lemma(query);
+        //qAns = Lemma.lemma(query);
         try {
             q = new QueryParser("Content", analyzer).parse(query);
         } catch (ParseException e) {
