@@ -21,6 +21,7 @@ public class Lemma {
 		for (CoreLabel tok : document.tokens()) {
 			lemmaContent += tok.lemma() + " ";
 		}
+		
 		return lemmaContent;
 	}
 }
